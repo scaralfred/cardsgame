@@ -69,6 +69,7 @@ class Card extends Component {
             onClick={()=>this.setState({...this.state.showCard, showCard: !this.state.showCard})}
             >
                 <img
+                    rel="preload"
                     alt={this.props.cardName}
                     src={this.state.showCard ?
                         require(`../../../assets/cards/${this.props.categoryName}/${this.props.cardName}.png`)
