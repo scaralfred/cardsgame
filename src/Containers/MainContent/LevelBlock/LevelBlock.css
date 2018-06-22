@@ -1,0 +1,28 @@
+.Level {
+  width: 20%;
+  padding: 10px;
+  background: white;
+  border-radius: 10px;
+  margin: 20px;
+  font-weight: 700;
+  border: 3px solid darkblue;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 6px -6px black;
+  color:  darkblue;
+  transition: all 0.3s;
+}
+
+.LevelSelected {
+  width: 20%;
+  padding: 7px;
+  background: white;
+  border-radius: 10px;
+  margin: 20px;
+  font-weight: 700;
+  border: 6px solid coral;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 6px -6px black;
+  color:  darkblue;
+  transform: scale(1.1);
+  transition: all 0.3s;
+}

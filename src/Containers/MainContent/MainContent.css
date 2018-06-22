@@ -1,0 +1,8 @@
+.MainContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-family: inherit;
+  flex-wrap: wrap;
+}

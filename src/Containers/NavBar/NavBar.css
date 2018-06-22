@@ -1,0 +1,19 @@
+.NavBar {
+  display: flex;
+  background-color: #FF1493;
+}
+
+.NavBarLink {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 4px 10px 2px 10px;
+  text-decoration: none;
+  border-bottom: solid 4px transparent
+}
+
+.NavBarLink:hover {
+  text-decoration: none;
+  color: yellow;
+  border-bottom: solid 4px chartreuse
+}

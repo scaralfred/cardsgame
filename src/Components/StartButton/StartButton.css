@@ -1,0 +1,12 @@
+.StartButton {
+  display: inline-block;
+  padding: 10px 25px;
+  margin: 10px;
+  font-size: 2rem;
+  font-weight: 900;
+  background: #FFE44F;
+  color: #FF5805;
+  border-radius: 50px;
+  border: 5px solid #1857BC
+}
+

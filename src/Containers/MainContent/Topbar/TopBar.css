@@ -1,0 +1,43 @@
+
+.TopBar {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 20vh;
+  flex-direction: row;
+  text-align: center;
+  background: #eee
+}
+
+.LogoSection {
+  display: flex;
+  flex-direction: column;
+  background: #eee;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 500;
+  padding: 0px 40px;
+}
+.FaceSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background:#FF7F50;
+  padding: 0px 40px;
+}
+.StarSection {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  background: white;
+  padding: 10px
+}
+.ButtonsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #eee;
+  padding: 10px
+}

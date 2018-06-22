@@ -1,0 +1,24 @@
+.Card {
+    display: inline-block;
+    width: 14% 
+}
+
+.CardSmall {
+    display: inline-block;
+    width: 12% 
+}
+
+.CardSmaller {
+    display: inline-block;
+    width: 10% 
+}
+
+.CardSmallest {
+    display: inline-block;
+    width: 8% 
+}
+/* @media only screen and (max-width: 1200px) {
+    .Cards {
+        width: 10% 
+    }
+} */
