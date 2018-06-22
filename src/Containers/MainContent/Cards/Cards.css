@@ -1,3 +1,10 @@
+.CardsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .Card {
     display: inline-block;
     width: 14% 
@@ -17,8 +24,17 @@
     display: inline-block;
     width: 8% 
 }
-/* @media only screen and (max-width: 1200px) {
-    .Cards {
-        width: 10% 
-    }
-} */
+
+.FunnyAnimal {
+    position: relative;
+    width: 20%
+}
+
+.FaceImage {
+    z-index: 5;
+    position: absolute;
+    top: 46%;
+    left: 34%;
+    border-radius: 50%;
+    width: 80px
+}

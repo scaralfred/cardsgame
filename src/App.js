@@ -16,7 +16,7 @@ class App extends Component {
           <Route path="/" exact component={MainContent} />
           <Route path="/login" exact component={LogInPage} />
       </Switch>
-      <ImagesLoader />
+      {/* <ImagesLoader /> */}
     </div>
     );
   }

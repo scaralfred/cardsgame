@@ -14,6 +14,9 @@ const initialState = {
         },
         preK2: {
             school: ["balls","books","box","hoops","jungle-gym","markers","scissors","shelves"]
+        },
+        vocabulary: {
+            funnyAnimals: ["mouse"]
         }
     },
     categoriesArray: [],

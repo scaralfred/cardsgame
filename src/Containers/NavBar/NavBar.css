@@ -1,6 +1,11 @@
 .NavBar {
   display: flex;
   background-color: #FF1493;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
 }
 
 .NavBarLink {

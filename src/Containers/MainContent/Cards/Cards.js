@@ -33,9 +33,21 @@ class Cards extends Component {
                 />
         })
 
+        const showFunnyAnimals = (
+            <div className={classes.FunnyAnimal}>
+                <img className={classes.FaceImage} src={require('../../../assets/kids/Class1/John.jpg')} />
+                <img
+                    rel="preload"
+                    alt={"mouse"}
+                    src={require(`../../../assets/cards/funnyAnimals/mouse-cut.png`)}
+                    style={{ width: "100%", zIndex: 10, position: "relative" }}
+                />
+            </div>
+        )
+
         return (
-            <div>
-                { showCards }
+            <div className={classes.CardsContainer}>
+                { !this.props.selCat.includes("funnyAnimals") ? showCards : showFunnyAnimals }
             </div>
         )
     }
@@ -90,12 +102,5 @@ const mapStateToProps = state => {
         memGame: state.categories.memoryGame
     }
 };
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         // onAddCategory: (categoryName) => dispatch(currencyActions.addCategory(categoryName)),
-//         // onRemoveCategory: (categoryName) => dispatch(currencyActions.removeCategory(categoryName))
-//     }
-// };
 
 export default connect(mapStateToProps, null)(Cards);
