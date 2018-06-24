@@ -14,7 +14,7 @@ var {authenticate} = require('./middleware/authenticate')
 
 // SET UP EXPRESS AND PORT NUMBER 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('public'));
+  app.use(express.static('build'));
 }
 
 var app = express();
