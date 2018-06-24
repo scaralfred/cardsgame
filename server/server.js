@@ -13,15 +13,12 @@ var {User} = require('./models/user');
 var {authenticate} = require('./middleware/authenticate')
 
 // SET UP EXPRESS AND PORT NUMBER 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'));
-}
 
 var app = express();
 const port = process.env.PORT;
-
-// MIDDLEWARES
-app.use(bodyParser.json());
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('public'));
+}
 
 // HomePage
 app.get("/", (req, res) => {
