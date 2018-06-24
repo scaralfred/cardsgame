@@ -1,7 +1,14 @@
-export { addCategory } from './categories';
-export { removeCategory } from './categories';
-export { addLevel } from './categories';
-export { addStar } from './categories';
-export { removeStar } from './categories';
-export { resetStars } from './categories';
-export { memoryGame } from './categories';
+export { addCategory,
+        removeCategory,
+        addLevel,
+        addStar,
+        removeStar,
+        resetStars,
+        memoryGame 
+} from './categories';
+export {
+    auth,
+    logout,
+    setAuthRedirectPath,
+    authCheckState
+} from './auth'

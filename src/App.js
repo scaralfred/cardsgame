@@ -14,7 +14,7 @@ class App extends Component {
       <NavBar />
       <Switch>
           <Route path="/" exact component={MainContent} />
-          <Route path="/login" exact component={LogInPage} />
+          <Route path="/authenticate" exact component={LogInPage} />
       </Switch>
       <ImagesLoader />
     </div>

@@ -35,7 +35,7 @@ class Cards extends Component {
 
         const showFunnyAnimals = (
             <div className={classes.FunnyAnimal}>
-                <img className={classes.FaceImage} src={require('../../../assets/kids/Class1/John.jpg')} />
+                <img className={classes.FaceImage} alt="John" src={require('../../../assets/kids/Class1/John.jpg')} />
                 <img
                     rel="preload"
                     alt={"mouse"}
@@ -65,11 +65,11 @@ class Card extends Component {
            if (this.props.cardsNumber > 6 && this.props.cardsNumber <18) {
               return  {width: '12%'} 
            } else if (this.props.cardsNumber >= 18 && this.props.cardsNumber < 30) {
-               return { width: '10%' }
+               return { width: '11%' }
            } else if (this.props.cardsNumber >= 30 && this.props.cardsNumber < 48) {
-               return { width: '8%' }
+               return { width: '10%' }
            } else if (this.props.cardsNumber >= 48 ) {
-               return { width: '6%' }
+               return { width: '9%' }
            }
         }
     

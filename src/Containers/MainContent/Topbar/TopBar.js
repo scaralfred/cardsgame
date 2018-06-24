@@ -16,6 +16,7 @@ class TopBar extends Component {
     onKeyDown = (event) => {
         if (event.code === 'Space') {
             this.props.onAddStar();
+            event.preventDefault();
         } else if (event.key === 'Backspace') {
             this.props.onRemoveStar();
         }

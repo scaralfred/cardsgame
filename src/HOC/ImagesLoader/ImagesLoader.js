@@ -7,7 +7,7 @@ class ImagesLoader extends Component {
     const cardsImages = Object.keys(this.props.cat)
         .map((el)=>{ return Object.keys(this.props.cat[el])
         .map((item) => { return Object.values(this.props.cat[el][item])
-        .map((obj) => { return <img src={require(`../../assets/cards/${item}/${obj}.png`)} /> 
+        .map((obj, i) => { return <img key={obj + i} alt={obj} src={require(`../../assets/cards/${item}/${obj}.png`)} /> 
                 })
             })
         });
