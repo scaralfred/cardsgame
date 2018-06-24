@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import classes from './NavBar.css';
-import Modal from '../../Components/Modal/Modal'
-import * as actions from '../../store/actions/auth';
+import Modal from '../../Components/Modal/Modal';
+import * as actions from '../../store/actions/index';
 
 class NavBar extends Component {
 
@@ -26,10 +26,17 @@ class NavBar extends Component {
             <div>
                 <div style={{ textAlign: "center", fontSize: 20, }}>Are you sure you want to log out?</div>
                 <div style={{textAlign: "center", display: "flex", flex: 1, alignItems: "center", justifyContent: "center"}}>
-                  <div onClick={()=>this._onLogOut()} style={{ fontSize: 20, padding: 10}}>Yes</div>
-                    <div onClick={() => this._onShowModal()} style={{ fontSize: 20, padding: 10}}>No</div>
+                  <div onClick={()=>this._onLogOut()} style={{fontWeight: "bold", fontSize: 20, padding: 10, cursor: "pointer"}}>Yes</div>
+                    <div onClick={() => this._onShowModal()} style={{ fontWeight: "bold", fontSize: 20, padding: 10, cursor: "pointer"}}>No</div>
                 </div>
             </div>
+        )
+
+        const userLoggedIn = (
+        <div style={{display: "flex", flexDirection:"row", cursor: "pointer"}}>
+            <div className={classes.NavBarLink}>Settings</div>
+            <Link to="/" className={classes.NavBarLink} onClick={() => this._onShowModal()}>Logout</Link>
+        </div>
         )
         
         return (
@@ -44,17 +51,11 @@ class NavBar extends Component {
                         :
                         null
                     }  
-                    { !this.props.logIn !== null ?
+                    { !this.props.logIn ?
                         <Link to="/authenticate" className={classes.NavBarLink}>Authenticate</Link>
                         :
-                        null
+                        userLoggedIn
                     }
-                    { this.props.logIn !== null ?
-                        <Link to="/" className={classes.NavBarLink} onClick={()=>this._onShowModal()}>Logout</Link>
-                        :
-                        null
-                    }
-
                 </div>
                 <Modal show={this.state.modal} modalClosed={()=>this._onShowModal()}>{modalContent}</Modal>
         </div>
@@ -64,7 +65,7 @@ class NavBar extends Component {
 
 const mapStateToProps = state => {
     return {
-        logIn: state.auth.token,
+        logIn: state.auth.token !== null,
         userName: state.auth.userName
     }
 };

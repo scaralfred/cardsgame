@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as currencyActions from '../../../store/actions/index';
+import * as actions from '../../../store/actions/index';
 import Button from '../../../Components/Button/Button';
 import classes from './TopBar.css';
 import MainLogo from '../../../assets/field-emei.jpg';
@@ -20,6 +20,10 @@ class TopBar extends Component {
         } else if (event.key === 'Backspace') {
             this.props.onRemoveStar();
         }
+    }
+
+    componentWillUnmount(){
+        document.removeEventListener('keydown', this.onKeyDown);
     }
 
     onResetCards() {
@@ -88,9 +92,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAddStar: () => dispatch(currencyActions.addStar()),
-        onRemoveStar: () => dispatch(currencyActions.removeStar()),
-        onResetStars: () => dispatch(currencyActions.resetStars())
+        onAddStar: () => dispatch(actions.addStar()),
+        onRemoveStar: () => dispatch(actions.removeStar()),
+        onResetStars: () => dispatch(actions.resetStars())
     }
 };
 
