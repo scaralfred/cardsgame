@@ -49,9 +49,12 @@ export const auth = (email, password, isSignUp) => {
             password: password,
             returnSecureToken: true
         };
-        let url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyASZTYGZ-s0giXOGN5ulAQTxR7TjSyuWSs'
+        let url = 'https://nodejs-application.herokuapp.com/users'
+        //firebase => 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyASZTYGZ-s0giXOGN5ulAQTxR7TjSyuWSs'
+        
         if (!isSignUp) {
-            url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyASZTYGZ-s0giXOGN5ulAQTxR7TjSyuWSs'
+            url = 'https://nodejs-application.herokuapp.com/users/login'
+        //firebase => 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword?key=AIzaSyASZTYGZ-s0giXOGN5ulAQTxR7TjSyuWSs'
         }
         axios.post(url, authData)
             .then(response => {
