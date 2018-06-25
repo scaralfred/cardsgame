@@ -18,10 +18,10 @@ var app = express();
 const port = process.env.PORT;
 app.use(express.static('build'));
 
-// HomePage
-// app.get("/", (req, res) => {
-//   res.render('index')
-// }); 
+HomePage
+app.get("/", (req, res) => {
+  res.render('index')
+}); 
 
 // The "catchall" handler: for any request that doesn't
 // match one below, send back React's index.html file.
