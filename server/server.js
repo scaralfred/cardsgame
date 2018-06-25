@@ -6,6 +6,7 @@ const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
 const {ObjectID} = require('mongodb');
+const path = require('path');
 
 var {mongoose} = require('./db/mongoose');
 var {Todo} = require('./models/todo');
@@ -13,17 +14,20 @@ var {User} = require('./models/user');
 var {authenticate} = require('./middleware/authenticate')
 
 // SET UP EXPRESS AND PORT NUMBER 
-
 var app = express();
 const port = process.env.PORT;
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('build'));
-}
+app.use(express.static('build'));
 
 // HomePage
-app.get("/", (req, res) => {
-  res.render('index')
-}); 
+// app.get("/", (req, res) => {
+//   res.render('index')
+// }); 
+
+// The "catchall" handler: for any request that doesn't
+// match one below, send back React's index.html file.
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname + 'client/build/index.html'));
+// });
 
 // POST /todos
 
