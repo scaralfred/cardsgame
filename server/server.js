@@ -10,7 +10,7 @@ app.use(express.static(path.join(__dirname, '../build')));
 //app.get('*', (req, res) => {
 //  res.sendFile(path.join(__dirname+'/clienild/index.html'));
 //});
-
+ 
 const port = process.env.PORT || 3000;
 app.listen(port);
 
