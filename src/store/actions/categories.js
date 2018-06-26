@@ -44,3 +44,9 @@ export const memoryGame = () => {
         type: actionTypes.MEMORY_GAME
     }
 };
+
+export const whatsMissing = () => {
+    return {
+        type: actionTypes.WHATS_MISSING
+    }
+};

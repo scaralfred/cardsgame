@@ -21,7 +21,8 @@ const initialState = {
     },
     categoriesArray: [],
     levelsArray: ["preK1"],
-    memoryGame: false
+    memoryGame: false,
+    whatsMissing: false
                         
 };
 
@@ -49,6 +50,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 memoryGame: !state.memoryGame
+            }
+
+        case actionTypes.WHATS_MISSING:
+            return {
+                ...state,
+                whatsMissing: !state.whatsMissing
             }
 
         default: 

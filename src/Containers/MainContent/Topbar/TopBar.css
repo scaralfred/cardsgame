@@ -14,8 +14,9 @@
   background: #eee;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  color: crimson;
+  font-weight: 600;
   padding: 0px 40px;
 }
 .FaceSection {

@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    starCounter: 0
+    starCounter: 0,
+    classUploaded: []
 };
 
 const reducer = (state = initialState, action) => {

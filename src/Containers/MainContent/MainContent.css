@@ -7,3 +7,28 @@
   font-family: inherit;
   flex-wrap: wrap;
 }
+
+.SelectLevel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.SelectCategory {
+  display: flex;
+  flex-direction: row
+}
+
+.Controls {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.MissingGameButtons {
+  border: 5px solid #1857BC;
+  background-color: #FFE44F;
+  color: #FF5805;
+  border-radius: 25px
+}

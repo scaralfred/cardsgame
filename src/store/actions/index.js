@@ -4,7 +4,8 @@ export { addCategory,
         addStar,
         removeStar,
         resetStars,
-        memoryGame 
+        memoryGame,
+        whatsMissing
 } from './categories';
 export {
     auth,

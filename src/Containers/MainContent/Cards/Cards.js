@@ -27,6 +27,7 @@ class Cards extends Component {
             })
             return <Card
                     cardsNumber={longArray.length}
+                    showAllCards={this.props.showAll}
                     key={item + i + Math.random()}
                     cardName={item}
                     categoryName={categName}
@@ -56,7 +57,8 @@ class Cards extends Component {
 class Card extends Component {
     
     state = {
-        showCard: false
+        showCard: false,
+        showAll: this.props.showAllCards
     }
 
     render() {
@@ -83,7 +85,7 @@ class Card extends Component {
                 <img
                     rel="preload"
                     alt={this.props.cardName}
-                    src={this.state.showCard ?
+                    src={this.state.showCard || this.state.showAll?
                         require(`../../../assets/cards/${this.props.categoryName}/${this.props.cardName}.png`)
                         : require(`../../../assets/cards/card-back.png`)
                     }

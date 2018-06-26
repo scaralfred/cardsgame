@@ -60,15 +60,17 @@ export const auth = (email, password, isSignUp) => {
             .then(response => {
                 console.log(response);
                 const expirationDate = new Date(new Date().getTime() + response.data.expiresIn * 1000);
-                localStorage.setItem('token', response.data.idToken);
+                localStorage.setItem('token', response.headers["x-auth"]);
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('userId', response.data.localId);
                 localStorage.setItem('userName', email);
-                dispatch(authSuccess(response.data.idToken, response.data.localId, email));
-                dispatch(checkAuthTimeout(response.data.expiresIn));
+                dispatch(authSuccess(response.headers["x-auth"], response.data.localId, email));
+                // dispatch(checkAuthTimeout(response.data.expiresIn));
             })
             .catch(err => {
-                dispatch(authFail(err.response.data.error));
+                // dispatch(authFail(err.response.data.error)); <-- Firebase
+
+                isSignUp ? dispatch(authFail(err.response.data.code)) : dispatch(authFail(err.response.data)) ; // <-- Node js
             })
     }
 }
@@ -86,15 +88,15 @@ export const authCheckState = () => {
         if (!token) {
             dispatch(logout());
         } else {
-            const expirationDate = new Date(localStorage.getItem('expirationDate'));
-            if (expirationDate <= new Date()) {
-                dispatch(logout());
-            } else {
+            // const expirationDate = new Date(localStorage.getItem('expirationDate'));
+            // if (expirationDate <= new Date()) {
+            //     dispatch(logout());
+            // } else {
                 const userId = localStorage.getItem('userId');
                 const userName = localStorage.getItem('userName');
                 dispatch(authSuccess(token, userId, userName));
-                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000))
-            }
+                // dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000))
+            // }
         }
     }
 }

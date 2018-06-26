@@ -7,6 +7,7 @@ import LevelBlock from './LevelBlock/LevelBlock';
 import Cards from './Cards/Cards';
 import classes from './MainContent.css';
 import StartButton from '../../Components/StartButton/StartButton';
+import Button from '../../Components/Button/Button'
 
 class MainContent extends Component {
 
@@ -14,7 +15,10 @@ class MainContent extends Component {
         gamePlay: false,
         selectLevel: true,
         memoryGame: false,
-        cardShuffling: false
+        cardShuffling: false,
+        showAll: false,
+        coverAll: false,
+        showOne: false
     }
 
 
@@ -57,17 +61,25 @@ activateLevel() {
     );
 
         const selectCategory = (
-            <div>
-                <div style={{ display: "flex", flexWrap:"wrap", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+            <div className={classes.SelectCategory}>
+                <div className={classes.Controls}>
+                    <StartButton onClick={() => this.setState({ ...this.state, selectLevel: true })} className={classes.StartButton}>Back</StartButton>
+                </div>
+                <div style={{ display: "flex", flex: 1, flexWrap:"wrap", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
                     {categories}
                     <CategoryBlock
                         selected={this.props.memGame}
                         categoryName={"memory"}
                         selectCategory={()=>this.props.onMemoryGame()}
                     >memory <br />game</CategoryBlock>
+                    <CategoryBlock
+                        selected={this.props.whatsMiss}
+                        categoryName={"missing"}
+                        selectCategory={() => this.props.onWhatsMissing()}
+                    >what's <br />missing</CategoryBlock>
                 </div>
-                <div>
-                    <StartButton onClick={() => this.dealCards()} className={classes.StartButton}>Start Game</StartButton>
+                <div className={classes.Controls}>
+                    <StartButton onClick={() => this.dealCards()} className={classes.StartButton}>Start</StartButton>
                 </div>
             </div>
         )
@@ -82,7 +94,7 @@ activateLevel() {
         });
 
         const selectLevel = (
-            <div>
+            <div className={classes.SelectLevel}>
                 <div style={{ display: "flex", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
                     {levels}
                 </div>
@@ -92,13 +104,26 @@ activateLevel() {
             </div>
         )
 
+        const missingGameButtons = (
+            <div style={{display: "flex", justifyContent: "center"}}>
+                <Button className={classes.MissingGameButtons} onClick={()=>this.setState({...this.state, showAll: true})}>SHOW ALL</Button> 
+                <Button className={classes.MissingGameButtons} onClick={() => this.setState({ ...this.state, showAll: false })}>COVER ALL</Button>
+                <Button className={classes.MissingGameButtons} onClick={null}>SHOW ONE</Button>
+            </div>
+        );
+
         const playGame =  (!this.state.gamePlay ? selectCategory
             :
             <div style={{padding: 20}}>
+            {this.props.whatsMiss ? missingGameButtons : null}
                 <Cards
+                    showAll={this.state.showAll}
+                    coverAll={this.state.coverAll}
+                    showOne={this.state.showOne}
                     cardShuffling={this.state.cardShuffling}
                     memGame={this.state.memoryGame}
                 />
+                <StartButton onClick={() => this.setState({ ...this.state, gamePlay: false })} className={classes.StartButton}>Change gategories</StartButton>
             </div>
             )
     
@@ -117,7 +142,8 @@ const mapStateToProps = state => {
         selCat: state.categories.categoriesArray,
         lev: state.categories.categories,
         currentLevel: state.categories.levelsArray,
-        memGame: state.categories.memoryGame
+        memGame: state.categories.memoryGame,
+        whatsMiss: state.categories.whatsMissing
     }
 };
 
@@ -126,7 +152,8 @@ const mapDispatchToProps = dispatch => {
         onAddCategory: (categoryName) => dispatch(currencyActions.addCategory(categoryName)),
         onRemoveCategory: (categoryName) => dispatch(currencyActions.removeCategory(categoryName)),
         onAddLevel: (levelName) => dispatch(currencyActions.addLevel(levelName)),
-        onMemoryGame: () => dispatch(currencyActions.memoryGame())
+        onMemoryGame: () => dispatch(currencyActions.memoryGame()),
+        onWhatsMissing: () => dispatch(currencyActions.whatsMissing()),
     }
 };
 

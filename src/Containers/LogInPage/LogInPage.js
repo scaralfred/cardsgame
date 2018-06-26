@@ -97,9 +97,13 @@ class LogInPage extends Component {
         let errorMessage = null;
 
         if (this.props.error) {
-            errorMessage = (
-                <p>{this.props.error.message}. We are sorry!</p>
-            )
+            if (this.props.error === 11000) {
+                errorMessage = <p>This email already exists. We are sorry!</p>; 
+            } else {
+                errorMessage = <p>{this.props.error}. We are sorry!</p>;
+            }
+
+           
         }
 
         let authRedirect = null;

@@ -7,6 +7,7 @@ import LogInPage from './Containers/LogInPage/LogInPage';
 import NavBar from './Containers/NavBar/NavBar';
 import ImagesLoader from './HOC/ImagesLoader/ImagesLoader';
 import * as actions from './store/actions/index';
+import PageNotFound from './Containers/PageNotFound/PageNotFound';
 
 class App extends Component {
 
@@ -21,6 +22,7 @@ class App extends Component {
       <Switch>
           <Route path="/" exact component={MainContent} />
           <Route path="/authenticate" exact component={LogInPage} />
+          <Route component={PageNotFound} />
       </Switch>
       <ImagesLoader />
     </div>

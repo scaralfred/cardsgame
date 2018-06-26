@@ -8,6 +8,8 @@ export const REMOVE_STAR = "REMOVE_STAR";
 export const RESET_STARS = "RESET_STARS";
 
 export const MEMORY_GAME = "MEMORY_GAME";
+export const WHATS_MISSING = "WHATS_MISSING";
+
 
 export const AUTH_START = 'AUTH_START';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
