@@ -1,0 +1,47 @@
+.ClassName {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center; 
+    margin: 5;
+    margin-right: 38;
+    font-size: 25px
+}
+
+.RemoveClassIcon {
+    padding: 5px 5px;
+    font-size: 22px
+}
+
+.AddPlayerButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 7px;
+    background: lightskyblue;
+    padding: 0px 5px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.AddPlayerInput {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 5px 
+}
+
+.PlayerName {
+    font-size: 20px;
+    
+}
+
+.PhotoIcon {
+    padding: 0px 10px;
+    font-size: 23px
+}
+
+.RemovePlayerIcon {
+    font-size: 18px;
+    padding: 3px 0px;
+}

@@ -7,8 +7,16 @@ import MainLogo from '../../../assets/card-game-logo.png';
 import DefaultFace from '../../../assets/Default-face.jpg';
 import MiniStar from '../../../assets/mini-star.png';
 import MiniStarRemove from '../../../assets/remove-mini-star.png';
+import Modal from '../../../Components/Modal/Modal';
+import ClassModal from './ClassModal/ClassModal';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 class TopBar extends Component {
+
+    state = {
+        classModal: false
+    }
 
     componentDidMount() {
         document.addEventListener('keydown', this.onKeyDown);
@@ -31,6 +39,15 @@ class TopBar extends Component {
         this.props.resetGame();
     }
 
+    _classModal(){
+        this.setState({...this.state, classModal: !this.state.classModal});
+        if (this.state.classModal) {
+            document.addEventListener('keydown', this.onKeyDown);
+        } else {
+            document.removeEventListener('keydown', this.onKeyDown);
+        }
+    }
+
     render() {
 
         const starRenderer = [];
@@ -39,7 +56,17 @@ class TopBar extends Component {
                 starRenderer.push(<img key={i} alt="star" src={MiniStar} style={{height: 35, padding: 3}}/>)
             }
 
-        const classUploader = this.props.classesNumber.length > 0 ? <div>Class</div> : <div>Click here<br /> to add a class</div>
+        const classDropDownMenu = (
+            <div style={{ display: "flex", flexDirection: "row" }}>
+                <Dropdown options={Object.keys(this.props.classList)}  placeholder="Select an option" />
+                <span onClick={()=>this._classModal()}>&nbsp;+</span>
+            </div>    
+        );
+
+        const classUploader = ( 
+        Object.keys(this.props.classList).length > 0 || this.state.classModal ? classDropDownMenu 
+        : <div>Click <span style={{textDecoration: "underline", cursor: "pointer"}} onClick={()=>this._classModal()}>here</span><br /> to add a class</div>
+        );
         
         return (
             <div className={classes.TopBar}>
@@ -81,6 +108,15 @@ class TopBar extends Component {
                     <Button style={{ backgroundColor: "#FFC107" }}>RESET GAME</Button>
                     <Button style={{ backgroundColor: "#5F9EA0"}}>SCORES</Button>
                  </div>
+                <Modal show={this.state.classModal} modalClosed={() => this._classModal()}>
+                    <ClassModal 
+                        classList={this.props.classList}
+                        onAddClass={(className)=>this.props.onAddClass(className)}
+                        onRemoveClass={(className) => this.props.onRemoveClass(className)}
+                        onAddPlayer={(playerName, className) => this.props.onAddPlayer(playerName, className)}
+                        onRemovePlayer={(playerName, className) => this.props.onRemovePlayer(playerName, className)}
+                    />
+                </Modal>
             </div>
         )
     }
@@ -90,7 +126,7 @@ const mapStateToProps = state => {
     return {
         starCtr: state.classSettings.starCounter,
         isLoggedIn: state.auth.token !== null,
-        classesNumber: state.classSettings.classUploaded
+        classList: state.classSettings.classList
     }
 };
 
@@ -98,7 +134,11 @@ const mapDispatchToProps = dispatch => {
     return {
         onAddStar: () => dispatch(actions.addStar()),
         onRemoveStar: () => dispatch(actions.removeStar()),
-        onResetStars: () => dispatch(actions.resetStars())
+        onResetStars: () => dispatch(actions.resetStars()),
+        onAddClass: (className) => dispatch(actions.addClass(className)),
+        onRemoveClass: (className) => dispatch(actions.removeClass(className)),
+        onAddPlayer: (playerName, className) => dispatch(actions.addPlayer(playerName, className)),
+        onRemovePlayer: (playerName, className) => dispatch(actions.removePlayer(playerName, className))
     }
 };
 

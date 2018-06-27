@@ -1,15 +1,23 @@
 export { addCategory,
         removeCategory,
         addLevel,
-        addStar,
-        removeStar,
-        resetStars,
         memoryGame,
         whatsMissing
 } from './categories';
+
 export {
     auth,
     logout,
     setAuthRedirectPath,
     authCheckState
 } from './auth'
+
+export {
+    addStar,
+    removeStar,
+    resetStars,
+    addClass,
+    removeClass,
+    addPlayer,
+    removePlayer
+} from './classSettings';

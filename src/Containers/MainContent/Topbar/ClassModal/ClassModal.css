@@ -1,0 +1,22 @@
+.ClassModal {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ClassInput {
+    padding: 5px;
+    font-size: 20px;
+    width: 35%
+}
+
+.AddClassButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 7px;
+    background: lightgreen;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-weight: 500;
+}

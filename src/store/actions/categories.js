@@ -21,24 +21,6 @@ export const addLevel = (level) => {
     }
 };
 
-export const addStar = () => {
-    return {
-        type: actionTypes.ADD_STAR
-    }
-};
-
-export const removeStar = () => {
-    return {
-        type: actionTypes.REMOVE_STAR
-    }
-};
-
-export const resetStars = () => {
-    return {
-        type: actionTypes.RESET_STARS
-    }
-};
-
 export const memoryGame = () => {
     return {
         type: actionTypes.MEMORY_GAME

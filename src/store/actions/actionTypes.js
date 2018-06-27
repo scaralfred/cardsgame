@@ -6,6 +6,11 @@ export const ADD_LEVEL = "ADD_LEVEL";
 export const ADD_STAR = "ADD_STAR";
 export const REMOVE_STAR = "REMOVE_STAR";
 export const RESET_STARS = "RESET_STARS";
+export const ADD_CLASS = "ADD_CLASS";
+export const REMOVE_CLASS = "REMOVE_CLASS";
+export const ADD_PLAYER = "ADD_PLAYER";
+export const REMOVE_PLAYER = "REMOVE_PLAYER";
+
 
 export const MEMORY_GAME = "MEMORY_GAME";
 export const WHATS_MISSING = "WHATS_MISSING";
