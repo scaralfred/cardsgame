@@ -19,5 +19,8 @@ export {
     addClass,
     removeClass,
     addPlayer,
-    removePlayer
+    removePlayer,
+    uploadPhoto,
+    removePhoto,
+    imageVisible
 } from './classSettings';

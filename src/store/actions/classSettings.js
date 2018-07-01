@@ -47,3 +47,28 @@ export const removePlayer = (playerName, className) => {
         className
     }
 };
+
+export const uploadPhoto = (className, playerName, fileURL) => {
+    return {
+        type: actionTypes.UPLOAD_PHOTO,
+        className,
+        playerName,
+        fileURL
+    }
+};
+
+export const removePhoto = (className, playerName) => {
+    return {
+        type: actionTypes.REMOVE_PHOTO,
+        className,
+        playerName
+    }
+};
+
+export const imageVisible = (className, playerName) => {
+    return {
+        type: actionTypes.IMAGE_VISIBLE,
+        className,
+        playerName
+    }
+};

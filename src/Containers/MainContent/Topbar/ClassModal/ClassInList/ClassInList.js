@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import classes from './ClassInList.css';
-import { IoTrashA, IoCamera, IoClose } from 'react-icons/lib/io';
+import { IoTrashA, IoArrowDownB, IoArrowLeftB } from 'react-icons/lib/io';
+import PlayerRow from './PlayerRow/PlayerRow';
 
 class ClassInList extends Component {
 
     state = {
         playerList: false,
-        addPlayer: false,
         playerNameInput: ""
     }
 
@@ -17,7 +17,8 @@ class ClassInList extends Component {
     _addPlayer() {
         if (!this.props.playersArray.includes(this.state.playerNameInput.toString().toUpperCase()) && this.state.playerNameInput.trim() !== "") {
             this.setState({ ...this.state, playerNameInput: "" });
-            this.props.onAddPlayer(this.state.playerNameInput, this.props.className);
+            this.props.onAddPlayer(this.state.playerNameInput.toString().toUpperCase(), this.props.className);
+            this.props.updateUI(this.state.playerNameInput.toString().toUpperCase(), this.props.className);
         } else {
             return
         }
@@ -25,32 +26,46 @@ class ClassInList extends Component {
 
     render() {
 
-        const playerList = this.props.playersArray.map((item) => {
-            return <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", margin: 5, marginRight: 38, }}>
-                <div className={classes.PlayerName}>{item}</div>
-                <IoCamera className={classes.PhotoIcon} onClick={null} />
-                <IoClose className={classes.RemovePlayerIcon} onClick={() => this.props.onRemovePlayer(item, this.props.className)} />
-            </div>
-        })
+        
+
+        const playerList = (
+            this.props.classList[this.props.className].length > 0 ?
+                this.props.playersArray.map((item, i) => {
+                    return (
+                        <PlayerRow 
+                            key={item + i}
+                            playerName={item}
+                            className={this.props.className}
+                            onRemovePlayer={() => this.props.onRemovePlayer(item, this.props.className)}
+                        />
+                    )
+                }) : <div style={{ margin: 10 }}>No players yet! Add a new one :)</div>
+        )
 
         const addPlayerInput = (
-            <div>
+            <div style={{marginTop: 8, marginBottom: 12}}>
                 <form className={classes.AddPlayerInput} onSubmit={() => this._playersHandler("add")}>
-                    <input placeholder="Player name" value={this.state.playerNameInput} onChange={(event) => this.setState({ ...this.state, playerNameInput: event.target.value })} />
-                    <div onClick={() => this._addPlayer()}>&nbsp;&nbsp;&nbsp;Add</div>
+                    <input className={classes.InputField} placeholder="Player name" value={this.state.playerNameInput} onChange={(event) => this.setState({ ...this.state, playerNameInput: event.target.value })} />
+                    <div className={classes.AddPlayerButton} onClick={() => this._addPlayer()}>Add&nbsp;Player</div>
                 </form>
             </div>
         )
 
         return (
-            <div style={{margin: 5}}>
-                <div className={classes.ClassName}>
-                    <div onClick={() => this.onShowPlayerList()}>{this.props.className}</div>
-                    {this.state.playerList ? <div className={classes.AddPlayerButton} onClick={() => this.setState({ ...this.state, addPlayer: !this.state.addPlayer })}>&nbsp;Add Player</div> : null}
-                    <IoTrashA className={classes.RemoveClassIcon} onClick={this.props.deleteClass} />
+            <div className={classes.Container}>
+                <div onClick={() => this.onShowPlayerList()} className={classes.ClassName} style={!this.state.playerList ? {borderBottom: "none"} : null}>
+                    <div>{this.props.className}</div>
+                    <div  style={{display: "flex", flexDirection: "row"}}>
+                        {this.state.playerList ? <IoArrowLeftB className={classes.RemoveClassIcon} style={{ paddingTop: 7 }} /> : <IoArrowDownB className={classes.RemoveClassIcon} style={{paddingTop: 7}}/>}
+                        <IoTrashA className={classes.RemoveClassIcon} onClick={this.props.deleteClass} />
+                    </div>
                 </div>
-                {this.state.addPlayer && this.state.playerList || this.state.playerList && this.props.playersArray.length === 0 ? addPlayerInput : null}
-                {this.state.playerList ? playerList : null}
+                {this.state.playerList ?
+                <div className={classes.PlayerList}>
+                        {playerList}
+                        {addPlayerInput}
+                </div>
+                : null }
             </div>
         )
     }

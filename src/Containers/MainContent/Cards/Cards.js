@@ -80,7 +80,7 @@ class Card extends Component {
             <div 
             className={classes.Card}
             style={cardWidth()}
-            onClick={()=>this.setState({...this.state.showCard, showCard: !this.state.showCard})}
+            onMouseDown={()=>this.setState({...this.state.showCard, showCard: !this.state.showCard})}
             >
                 <img
                     rel="preload"

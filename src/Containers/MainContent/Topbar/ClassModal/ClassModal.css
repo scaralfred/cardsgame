@@ -1,4 +1,4 @@
-.ClassModal {
+.ClassUploader {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -19,4 +19,19 @@
     padding: 7px 10px;
     border-radius: 5px;
     font-weight: 500;
+}
+
+.ClassesManager {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    font-size: 40px;
+    color: rebeccapurple;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 1px solid gray
+}
+
+.NoClasses {
+    padding: 20px;
+    font-size: 20px
 }

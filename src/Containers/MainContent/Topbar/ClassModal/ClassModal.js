@@ -8,20 +8,6 @@ class ClassModal extends Component {
         classInput: ""
     }
 
-    // componentDidMount() {
-    //     document.addEventListener('keydown', this.onKeyDown);
-    // }
-    // onKeyDown = (event) => {
-    //     if (event.code === 'Enter') {
-    //         this._classListHandler("add");
-    //         event.preventDefault();
-    //     }
-    // }
-
-    // componentWillUnmount() {
-    //     document.removeEventListener('keydown', this.onKeyDown);
-    // }
-
     _classListHandler(del, item) {
         if (del === "add") {
             if (!Object.keys(this.props.classList).includes(this.state.classInput.toString().toUpperCase()) && this.state.classInput.trim() !== "") {
@@ -38,12 +24,12 @@ class ClassModal extends Component {
 
     render() {
 
-
-
         const showClasses = Object.keys(this.props.classList).map((item, i) => {
             return <ClassInList
                 key={item + i}
                 className={item}
+                classList={this.props.classList}
+                updateUI={(playerName, className)=>this.props.updateUI(playerName, className)}
                 playersArray={this.props.classList[item]}
                 showPlayerList={() => this._playerList()}
                 deleteClass={() => this._classListHandler("delete", item)}
@@ -52,9 +38,14 @@ class ClassModal extends Component {
             />
         });
 
+        const noClasses = (
+            <div className={classes.NoClasses}>Click on the green button<br /> to add a class</div>
+        )
+
         return (
-            <div>
-                <form className={classes.ClassModal} onSubmit={() => this._classListHandler("add")}>
+            <div className={classes.ClassModal}>
+                <div className={classes.ClassesManager}>Classes manager</div>
+                <form className={classes.ClassUploader} onSubmit={() => this._classListHandler("add")}>
                     <input
                         className={classes.ClassInput}
                         placeholder="Class name" 
@@ -63,8 +54,8 @@ class ClassModal extends Component {
                     />
                     <div className={classes.AddClassButton} onClick={() => this._classListHandler("add")}>Add Class</div>
                 </form>
-                <div>
-                    {showClasses}
+                <div style={{padding: 10}}>
+                    {Object.keys(this.props.classList).length > 0 ? showClasses : noClasses}
                 </div>
             </div>
         )

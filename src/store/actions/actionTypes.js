@@ -10,11 +10,12 @@ export const ADD_CLASS = "ADD_CLASS";
 export const REMOVE_CLASS = "REMOVE_CLASS";
 export const ADD_PLAYER = "ADD_PLAYER";
 export const REMOVE_PLAYER = "REMOVE_PLAYER";
-
+export const UPLOAD_PHOTO = "UPLOAD_PHOTO";
+export const REMOVE_PHOTO = "REMOVE_PHOTO";
+export const IMAGE_VISIBLE = "IMAGE_VISIBLE";
 
 export const MEMORY_GAME = "MEMORY_GAME";
 export const WHATS_MISSING = "WHATS_MISSING";
-
 
 export const AUTH_START = 'AUTH_START';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';

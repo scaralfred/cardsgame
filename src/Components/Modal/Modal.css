@@ -2,14 +2,18 @@
     position: fixed;
     z-index: 500;
     background-color: white;
+    background: linear-gradient(#ddd6f3 , white, white, white, #ddd6f3);
     width: 70%;
+    max-height: 80%;
     border: 1px solid #ccc;
     box-shadow: 1px 1px 1px black;
     padding: 16px;
     left: 15%;
-    top: 30%;
+    top: 10%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
+    border: 5px solid #FF1493;
+    overflow-x: hidden
 }
 
 @media (min-width: 600px) {

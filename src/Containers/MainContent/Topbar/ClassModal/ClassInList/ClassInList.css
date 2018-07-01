@@ -1,10 +1,21 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    margin: 0% 5%
+}
+
 .ClassName {
     display: flex; 
     flex-direction: row; 
-    justify-content: center; 
-    margin: 5;
-    margin-right: 38;
-    font-size: 25px
+    justify-content: space-between; 
+    width: 100%;
+    padding: 6px;
+    font-size: 40px;
+    border-bottom: 1px solid grey;
+
 }
 
 .RemoveClassIcon {
@@ -15,13 +26,27 @@
 .AddPlayerButton {
     display: flex;
     justify-content: center;
+    flex-direction: row;
     align-items: center;
-    margin: 0px 7px;
+    margin-left: 10px;
     background: lightskyblue;
     padding: 0px 5px;
-    border-radius: 5px;
+    border-radius: 2px;
     font-size: 15px;
     font-weight: 500;
+}
+
+.InputField {
+    height: 22px;
+    font-size: 18px;
+}
+
+.InputField::placeholder {
+    font-size: 0.9rem;
+}
+
+.PlayerList {
+    width: 100%
 }
 
 .AddPlayerInput {
@@ -31,17 +56,3 @@
     margin: 5px 
 }
 
-.PlayerName {
-    font-size: 20px;
-    
-}
-
-.PhotoIcon {
-    padding: 0px 10px;
-    font-size: 23px
-}
-
-.RemovePlayerIcon {
-    font-size: 18px;
-    padding: 3px 0px;
-}

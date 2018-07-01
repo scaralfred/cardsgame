@@ -1,0 +1,31 @@
+.PlayerRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 6px;
+    font-size:  35px;
+}
+
+.PhotoIcon {
+    padding: 0px 10px;
+    font-size: 33px
+}
+
+.RemovePlayerIcon {
+    font-size: 28px;
+}
+
+.PlayerPhoto {
+    font-size: 15px;
+    margin-right: 10px;
+    height: 50px;
+}
+
+.Dropzone {
+    /* margin: 5px;
+    font-size: 20px;
+    width: 50%;
+    height: 100%;
+    border: 1px solid black; */
+}
