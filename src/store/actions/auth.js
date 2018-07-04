@@ -49,11 +49,11 @@ export const auth = (email, password, isSignUp) => {
             email: email,
             password: password
         };
-        let url = 'https://cards-game-login-server.herokuapp.com/users'
+        let url = 'https://nodejs-application.herokuapp.com/users'
         // "http://localhost:5000/users"
         
         if (!isSignUp) {
-            url = 'https://cards-game-login-server.herokuapp.com/login'
+            url = 'https://nodejs-application.herokuapp.com/users/login'
             // "http://localhost:5000/users/login"
         }
         axios.post(url, authData)
@@ -73,7 +73,7 @@ export const auth = (email, password, isSignUp) => {
 
             })
             .catch(err => {
-                isSignUp ? dispatch(authFail(err.response.data.code)) : dispatch(authFail(err.response.data)) ; // <-- Node js
+                isSignUp ? dispatch(authFail(err.response.data.code)) : dispatch(authFail(err.response.data)); // <-- Node js
             })
     }
 }

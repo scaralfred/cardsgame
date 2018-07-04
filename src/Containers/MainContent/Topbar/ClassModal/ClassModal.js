@@ -25,8 +25,8 @@ class ClassModal extends Component {
         let classSettings = { classSettings:  newSettings}
         
         let id = this.props.auth.classSettingsID;
-        let url = "https://cards-game-login-server.herokuapp.com/school/" + id;
-        axios.patch(url, classSettings, { headers: { "X-Auth": this.props.auth.token } })
+        let url = "https://nodejs-application.herokuapp.com/school/" + id;
+        axios.patch(url, classSettings, { headers: { "x-auth": this.props.auth.token } })
             .then(response => {
                 console.log(response)
             })
