@@ -13,6 +13,7 @@ export const REMOVE_PLAYER = "REMOVE_PLAYER";
 export const UPLOAD_PHOTO = "UPLOAD_PHOTO";
 export const REMOVE_PHOTO = "REMOVE_PHOTO";
 export const IMAGE_VISIBLE = "IMAGE_VISIBLE";
+export const RETRIEVE_STATE = "RETRIEVE_STATE";
 
 export const MEMORY_GAME = "MEMORY_GAME";
 export const WHATS_MISSING = "WHATS_MISSING";

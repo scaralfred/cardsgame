@@ -10,7 +10,7 @@ class ImagesLoader extends Component {
     const playersPhoto = (
         Object.keys(this.props.playerPhoto).map((className)=> {
             return Object.keys(this.props.playerPhoto[className])
-                .filter((playerName) => { return this.props.playerPhoto[className][playerName]["photo"] !== null})
+                .filter((playerName) => { return this.props.playerPhoto[className][playerName]["photo"]})
                 .map((playerName, i)=> {
                 return <img 
                         key={playerName + i} 

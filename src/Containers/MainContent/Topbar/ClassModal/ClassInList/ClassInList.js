@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../../../../../store/actions/index';
 import classes from './ClassInList.css';
 import { IoTrashA, IoArrowDownB, IoArrowLeftB } from 'react-icons/lib/io';
 import PlayerRow from './PlayerRow/PlayerRow';
@@ -9,6 +11,7 @@ class ClassInList extends Component {
         playerList: false,
         playerNameInput: ""
     }
+
 
     onShowPlayerList() {
         this.setState({ ...this.state, playerList: !this.state.playerList })
@@ -24,6 +27,10 @@ class ClassInList extends Component {
         }
     }
 
+    _removePlayer(item, className) {
+        this.props.onRemovePlayer(item, className);
+    }
+
     render() {
 
         
@@ -36,7 +43,7 @@ class ClassInList extends Component {
                             key={item + i}
                             playerName={item}
                             className={this.props.className}
-                            onRemovePlayer={() => this.props.onRemovePlayer(item, this.props.className)}
+                            onRemovePlayer={() => this._removePlayer(item, this.props.className)}
                         />
                     )
                 }) : <div style={{ margin: 10 }}>No players yet! Add a new one :)</div>
@@ -49,13 +56,13 @@ class ClassInList extends Component {
                     <div className={classes.AddPlayerButton} onClick={() => this._addPlayer()}>Add&nbsp;Player</div>
                 </form>
             </div>
-        )
+        ) 
 
         return (
             <div className={classes.Container}>
                 <div onClick={() => this.onShowPlayerList()} className={classes.ClassName} style={!this.state.playerList ? {borderBottom: "none"} : null}>
                     <div>{this.props.className}</div>
-                    <div  style={{display: "flex", flexDirection: "row"}}>
+                    <div  style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
                         {this.state.playerList ? <IoArrowLeftB className={classes.RemoveClassIcon} style={{ paddingTop: 7 }} /> : <IoArrowDownB className={classes.RemoveClassIcon} style={{paddingTop: 7}}/>}
                         <IoTrashA className={classes.RemoveClassIcon} onClick={this.props.deleteClass} />
                     </div>
@@ -71,4 +78,19 @@ class ClassInList extends Component {
     }
 };
 
-export default ClassInList;
+const mapStateToProps = state => {
+    return {
+        playerPhoto: state.classSettings.playerPhoto,
+        classSettings: state.classSettings,
+        auth: state.auth
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onUploadPhoto: (className, playerName, fileURL) => dispatch(actions.uploadPhoto(className, playerName, fileURL)),
+        onRemovePhoto: (className, playerName) => dispatch(actions.removePhoto(className, playerName))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClassInList);

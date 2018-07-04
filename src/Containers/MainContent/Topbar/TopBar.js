@@ -14,13 +14,20 @@ import SelectList from '../../../Components/SelectList/SelectList';
 class TopBar extends Component {
 
     state = {
-        classModal: true,
+        classModal: false,
         selectedClass: undefined,
-        selectedPlayer: undefined
+        selectedPlayer: undefined,
+
     }
 
     componentDidMount() {
         document.addEventListener('keydown', this.onKeyDown);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.isLoggedIn !== nextProps.isLoggedIn) {
+            this.setState({...this.state, selectedClass: undefined, selectedPlayer: undefined})
+        }
     }
 
     onKeyDown = (event) => {
@@ -134,7 +141,7 @@ class TopBar extends Component {
         )
 
         const photoModule = () => {
-            if (!this.props.playerPhoto[this.state.selectedClass][this.state.selectedPlayer].photo) {
+            if (!this.props.playerPhoto[this.state.selectedClass][this.state.selectedPlayer].photo || this.props.playerPhoto[this.state.selectedClass][this.state.selectedPlayer].photo === undefined) {
               return <div style={{ fontSize: 40, fontWeight: "600" }}>{this.state.selectedPlayer}</div>
             } else {
                 if (this.props.playerPhoto[this.state.selectedClass][this.state.selectedPlayer].visible) {

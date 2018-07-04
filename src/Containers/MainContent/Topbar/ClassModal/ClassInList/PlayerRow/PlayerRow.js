@@ -3,11 +3,26 @@ import { connect } from 'react-redux';
 import * as actions from '../../../../../../store/actions/index';
 import classes from './PlayerRow.css';
 import { IoCamera, IoClose } from 'react-icons/lib/io';
-import Dropzone from 'react-dropzone'
-import axios from 'axios'
-// import { Image } from 'cloudinary-react';
+import Dropzone from 'react-dropzone';
+import axios from 'axios';
 
 class PlayerRow extends Component {
+
+    updateServer() {
+        let classSettings = {
+            classSettings: this.props.classSettings
+        }
+
+        let id = this.props.auth.classSettingsID;
+        let url = "https://nodejs-application.herokuapp.com/school/" + id;
+        axios.patch(url, classSettings, { headers: { "X-Auth": this.props.auth.token } })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
 
     handleDrop = files => {
         // Push all the axios request promise into a single array
@@ -26,9 +41,7 @@ class PlayerRow extends Component {
             }).then(response => {
                 const data = response.data;
                 const fileURL = data.secure_url // You should store this URL for future references in your app
-                console.log(response)
-                console.log(data);
-                console.log(fileURL);
+
                 if (response.status === 200) {
                     this.props.onUploadPhoto(this.props.className, this.props.playerName, fileURL)
                 }
@@ -40,7 +53,7 @@ class PlayerRow extends Component {
 
         // Once all the files are uploaded 
         axios.all(uploaders).then(() => {
-            
+            this.updateServer();
         });
     }
 
@@ -60,7 +73,7 @@ class PlayerRow extends Component {
                 <div style={{ flexDirection: "row", display: "flex", justifyContent: "center", alignItems: "center" }}>
                     
                     {
-                        this.props.playerPhoto[this.props.className][this.props.playerName].photo !== null ?
+                        this.props.playerPhoto[this.props.className][this.props.playerName].photo ?
                             <PlayerPhoto
                                 photoUrl={this.props.playerPhoto[this.props.className][this.props.playerName].photo}
                                 photoRemover={() => this.props.onRemovePhoto(this.props.className, this.props.playerName)}
@@ -91,7 +104,9 @@ const PlayerPhoto = (props) => (
 
 const mapStateToProps = state => {
     return {
-        playerPhoto: state.classSettings.playerPhoto
+        playerPhoto: state.classSettings.playerPhoto,
+        classSettings: state.classSettings,
+        auth: state.auth
     }
 };
 

@@ -10,7 +10,8 @@
 .ClassName {
     display: flex; 
     flex-direction: row; 
-    justify-content: space-between; 
+    justify-content: space-between;
+    align-content: center;
     width: 100%;
     padding: 6px;
     font-size: 40px;
@@ -20,7 +21,7 @@
 
 .RemoveClassIcon {
     padding: 5px 5px;
-    font-size: 22px
+    font-size: 30px
 }
 
 .AddPlayerButton {

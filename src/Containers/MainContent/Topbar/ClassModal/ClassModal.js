@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ClassInList from './ClassInList/ClassInList';
-import classes from './ClassModal.css'
+import classes from './ClassModal.css';
+import axios from 'axios';
 
 class ClassModal extends Component {
 
@@ -8,17 +10,44 @@ class ClassModal extends Component {
         classInput: ""
     }
 
+    componentWillReceiveProps(nextProps) {
+        const newValue = nextProps.classSettings;
+        const loggingOut = nextProps.auth.token;
+
+        if (newValue !== this.props.classSettings && this.props.auth.token && loggingOut === this.props.auth.token ) {
+            localStorage.setItem('classSettings', JSON.stringify(newValue));
+            this.updateServer(newValue);
+        }
+    }
+
+    updateServer(newSettings) {
+        
+        let classSettings = { classSettings:  newSettings}
+        
+        let id = this.props.auth.classSettingsID;
+        let url = "https://nodejs-application.herokuapp.com/school/" + id;
+        axios.patch(url, classSettings, { headers: { "X-Auth": this.props.auth.token } })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
     _classListHandler(del, item) {
         if (del === "add") {
             if (!Object.keys(this.props.classList).includes(this.state.classInput.toString().toUpperCase()) && this.state.classInput.trim() !== "") {
                 this.setState({ ...this.state, classInput: "" });
                 this.props.onAddClass(this.state.classInput);
+                // this.updateServer();
             } else {
                 return
             }
 
         } else {
             this.props.onRemoveClass(item);
+            // this.updateServer();
         }
     }
 
@@ -60,6 +89,15 @@ class ClassModal extends Component {
             </div>
         )
     }
+}; 
+
+const mapStateToProps = state => {
+    return {
+        playerPhoto: state.classSettings.playerPhoto,
+        classSettings: state.classSettings,
+        auth: state.auth
+    }
 };
 
-export default ClassModal;
+
+export default connect(mapStateToProps, null)(ClassModal);

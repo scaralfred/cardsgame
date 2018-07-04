@@ -10,7 +10,7 @@ class NavBar extends Component {
     state = {
         modal: false
     }
-
+    
     _onLogOut () {
         this.props.onLogOut();
         this._onShowModal();

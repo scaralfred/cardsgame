@@ -22,5 +22,6 @@ export {
     removePlayer,
     uploadPhoto,
     removePhoto,
-    imageVisible
+    imageVisible,
+    retrieveState
 } from './classSettings';

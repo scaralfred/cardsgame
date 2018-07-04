@@ -3,11 +3,11 @@ import { updateObject } from '../../shared/utility'
 
 const initialState = {
     token: null,
-    userId: null,
     error: null,
     loading: false,
     authRedirectPath: '/',
-    userName: null
+    userName: null,
+    classSettingsID: null
 };
 
 const authStart = (state, action) => {
@@ -17,10 +17,10 @@ const authStart = (state, action) => {
 const authSuccess = (state, action) => {
     return updateObject(state, {
         token: action.idToken,
-        userId: action.userId,
         error: false,
         loading: false,
-        userName: action.userName
+        userName: action.userName,
+        classSettingsID: action.schoolID
     })
 }
 
@@ -32,7 +32,7 @@ const authFail = (state, action) => {
 }
 
 const authLogout = (state, action) => {
-    return updateObject(state, { token: null, userId: null, userName: null })
+    return updateObject(state, { token: null, userId: null, userName: null, classSettingsID: null })
 };
 const setAuthRedirectPath = (state, action) => {
     return updateObject(state, { authRedirectPath: action.path })

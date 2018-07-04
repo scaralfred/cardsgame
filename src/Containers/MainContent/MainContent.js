@@ -7,10 +7,10 @@ import LevelBlock from './LevelBlock/LevelBlock';
 import Cards from './Cards/Cards';
 import classes from './MainContent.css';
 import StartButton from '../../Components/StartButton/StartButton';
-import Button from '../../Components/Button/Button'
+import Button from '../../Components/Button/Button';
 
 class MainContent extends Component {
-
+ 
     state = {
         gamePlay: false,
         selectLevel: true,
@@ -21,6 +21,14 @@ class MainContent extends Component {
         showOne: false
     }
 
+componentDidMount(){
+    if (this.props.retrieveState) {
+        this.props.onRetrieveState(this.props.retrieveState);
+    } 
+    if ( localStorage.getItem('classSettings') ) {
+        this.props.onRetrieveState(JSON.parse(localStorage.getItem('classSettings')));
+    }
+}
 
 onSelectCategory(el) {
 if (!this.props.selCat.includes(el)) {
@@ -127,7 +135,7 @@ activateLevel() {
             </div>
             )
     
-        
+         
         return (
             <div className={classes.MainContent} >
                 <TopBar resetGame={() => this.onResetGame()}/>
@@ -143,7 +151,10 @@ const mapStateToProps = state => {
         lev: state.categories.categories,
         currentLevel: state.categories.levelsArray,
         memGame: state.categories.memoryGame,
-        whatsMiss: state.categories.whatsMissing
+        whatsMiss: state.categories.whatsMissing,
+        classSettings: state.classSettings,
+        auth: state.auth,
+        retrieveState: state.classSettings.retrieveState
     }
 };
 
@@ -154,6 +165,7 @@ const mapDispatchToProps = dispatch => {
         onAddLevel: (levelName) => dispatch(currencyActions.addLevel(levelName)),
         onMemoryGame: () => dispatch(currencyActions.memoryGame()),
         onWhatsMissing: () => dispatch(currencyActions.whatsMissing()),
+        onRetrieveState: (newState) => dispatch(currencyActions.retrieveState(newState)),
     }
 };
 

@@ -2,24 +2,36 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     starCounter: 0,
-    classList: {
-        PREK1: ['JACK', 'PAUL'],
-        PREK2: ['LISA', 'ROMOLO']
-    },
-    playerPhoto: {
-        PREK1: {
-            JACK: {photo: null, visible: false},
-            PAUL: { photo: null, visible: false }
-        },
-        PREK2: {
-            LISA: { photo: null, visible: false },
-            ROMOLO: { photo: null, visible: false }
-        }
-    }
+    classList: {},
+    playerPhoto: {}
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+
+        case actionTypes.AUTH_SUCCESS:
+            return {
+                ...state,
+                retrieveState: action.classSettings
+            }
+
+        case actionTypes.RETRIEVE_STATE:
+            return {
+                ...state,
+                starCounter: action.newState.starCounter,
+                classList: action.newState.classList,
+                playerPhoto: action.newState.playerPhoto
+            }
+
+        case actionTypes.AUTH_LOGOUT:
+            return {
+                ...state,
+                starCounter: 0,
+                classList: {},
+                playerPhoto: {},
+                retrieveState: null
+            }
+
         case actionTypes.ADD_STAR:
             return {
                 ...state,
@@ -113,7 +125,7 @@ const reducer = (state = initialState, action) => {
                         ...state.playerPhoto[action.className],
                         [action.playerName]: {
                             ...state.playerPhoto[action.className][action.playerName],
-                            photo: null, 
+                            photo: false, 
                             visible: false
                         }
                     }

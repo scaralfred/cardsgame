@@ -72,3 +72,10 @@ export const imageVisible = (className, playerName) => {
         playerName
     }
 };
+
+export const retrieveState = (newState) => {
+    return {
+        type: actionTypes.RETRIEVE_STATE,
+        newState
+    }
+}
