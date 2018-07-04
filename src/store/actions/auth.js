@@ -49,11 +49,11 @@ export const auth = (email, password, isSignUp) => {
             email: email,
             password: password
         };
-        let url = 'https://nodejs-application.herokuapp.com/users'
+        let url = 'https://cards-game-login-server.herokuapp.com/users'
         // "http://localhost:5000/users"
         
         if (!isSignUp) {
-            url = 'https://nodejs-application.herokuapp.com/users/login'
+            url = 'https://cards-game-login-server.herokuapp.com/login'
             // "http://localhost:5000/users/login"
         }
         axios.post(url, authData)
