@@ -8,13 +8,16 @@ import DefaultFace from '../../../assets/Default-face.jpg';
 import MiniStar from '../../../assets/mini-star.png';
 import MiniStarRemove from '../../../assets/remove-mini-star.png';
 import Modal from '../../../Components/Modal/Modal';
+import ModalScore from '../../../Components/Modal/Modal';
 import ClassModal from './ClassModal/ClassModal';
 import SelectList from '../../../Components/SelectList/SelectList';
+import ScoreModal from './ScoreModal/ScoreModal';
 
 class TopBar extends Component {
 
     state = {
         classModal: false,
+        modalScore: false,
         selectedClass: undefined,
         selectedPlayer: undefined,
 
@@ -191,7 +194,7 @@ class TopBar extends Component {
                 </div>
                 <div className={classes.StarSection}>
                     <div style={{ display: "flex", alignItems: "center"}}>
-                        <div style={{flex: 1, textAlign: "center", fontSize: "2rem", fontWeight: 700 }}>Class</div>
+                        <div style={{flex: 1, textAlign: "center", fontSize: "2rem", fontWeight: 700 }}>{this.state.selectedPlayer ? this.state.selectedPlayer : "No player"}</div>
                         <div>
                             <Button style={{ background: "#FF1493"}} onClick={()=>this.props.onResetStars()}>RESET STARS</Button>
                         </div>
@@ -210,7 +213,7 @@ class TopBar extends Component {
                 <div className={classes.ButtonsSection}>
                     <Button style={{backgroundColor: "dodgerblue"}} onClick={()=> this.onResetCards()}>RESET CARDS</Button>
                     <Button style={{ backgroundColor: "#FFC107" }}>RESET GAME</Button>
-                    <Button style={{ backgroundColor: "#5F9EA0"}}>SCORES</Button>
+                    <Button style={{ backgroundColor: "#5F9EA0"}} onClick={()=> this.setState({...this.state, modalScore: true})}>SCORES</Button>
                  </div>
                 <Modal show={this.state.classModal} modalClosed={() => this._classModal()} style={{padding: 0}}>
                     <ClassModal 
@@ -222,6 +225,10 @@ class TopBar extends Component {
                         onRemovePlayer={(playerName, className) => this._onRemovePLayer(playerName, className)}
                     />
                 </Modal>
+                <ModalScore show={this.state.modalScore} modalClosed={() => this.setState({...this.state, modalScore: false }) } style={{ padding: 0 }}>
+                    <ScoreModal
+                    />
+                </ModalScore>
             </div>
         )
     }

@@ -34,7 +34,6 @@ class NavBar extends Component {
 
         const userLoggedIn = (
         <div style={{display: "flex", flexDirection:"row", cursor: "pointer"}}>
-            <div className={classes.NavBarLink}>Settings</div>
             <Link to="/" className={classes.NavBarLink} onClick={() => this._onShowModal()}>Logout</Link>
         </div>
         )

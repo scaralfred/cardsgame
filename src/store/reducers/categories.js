@@ -13,10 +13,8 @@ const initialState = {
             jobs: ["dentist", "nurse", "fire-fighter", "bus-driver", "doctor", "police-officer"]
         },
         preK2: {
-            school: ["balls","books","box","hoops","jungle-gym","markers","scissors","shelves"]
-        },
-        vocabulary: {
-            funnyAnimals: ["mouse"]
+            school: ["balls","books","box","hoops","jungle-gym","markers","scissors","shelves"],
+            mysenses: []
         }
     },
     categoriesArray: [],

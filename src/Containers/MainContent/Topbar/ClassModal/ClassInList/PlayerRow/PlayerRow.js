@@ -57,6 +57,12 @@ class PlayerRow extends Component {
         });
     }
 
+    _onRemovePhoto() {
+        // this.deleteCloudinaryImage();
+        this.props.onRemovePhoto(this.props.className, this.props.playerName);
+    }
+
+ 
 
     capitalizer(inStr) {
         inStr = inStr.toLowerCase()
@@ -64,7 +70,7 @@ class PlayerRow extends Component {
             return tStr.charAt(0).toUpperCase() + tStr.substr(1).toLowerCase();
         });
     }
-
+ 
     render() {
 
         return (
@@ -76,7 +82,9 @@ class PlayerRow extends Component {
                         this.props.playerPhoto[this.props.className][this.props.playerName].photo ?
                             <PlayerPhoto
                                 photoUrl={this.props.playerPhoto[this.props.className][this.props.playerName].photo}
-                                photoRemover={() => this.props.onRemovePhoto(this.props.className, this.props.playerName)}
+                                photoRemover={() => { if (window.confirm("Are you sure you want to remove this photo? If you remove it then you'll be able to add a new one.")) { return this._onRemovePhoto() } }
+                                }
+                                
                             />
                             : <Dropzone
                                 onDrop={this.handleDrop}
@@ -89,7 +97,9 @@ class PlayerRow extends Component {
                             
                             
                     }
-                    <IoClose className={classes.RemovePlayerIcon} onClick={this.props.onRemovePlayer} />
+                    <IoClose className={classes.RemovePlayerIcon} onClick={ () =>
+                    { if (window.confirm("Are you sure you want to remove this player?")) {return  this.props.onRemovePlayer()}}
+                   } />
                 </div>
             </div>
         )

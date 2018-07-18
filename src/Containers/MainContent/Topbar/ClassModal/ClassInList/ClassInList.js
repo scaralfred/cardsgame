@@ -60,11 +60,11 @@ class ClassInList extends Component {
 
         return (
             <div className={classes.Container}>
-                <div onClick={() => this.onShowPlayerList()} className={classes.ClassName} style={!this.state.playerList ? {borderBottom: "none"} : null}>
-                    <div>{this.props.className}</div>
+                <div  className={classes.ClassName} style={!this.state.playerList ? {borderBottom: "none"} : null}>
+                    <div onClick={() => this.onShowPlayerList()}>{this.props.className}</div>
                     <div  style={{display: "flex", flexDirection: "row", alignItems: "center"}}>
-                        {this.state.playerList ? <IoArrowLeftB className={classes.RemoveClassIcon} style={{ paddingTop: 7 }} /> : <IoArrowDownB className={classes.RemoveClassIcon} style={{paddingTop: 7}}/>}
-                        <IoTrashA className={classes.RemoveClassIcon} onClick={this.props.deleteClass} />
+                        {this.state.playerList ? <IoArrowLeftB onClick={() => this.onShowPlayerList()} className={classes.RemoveClassIcon} style={{ paddingTop: 7 }} /> : <IoArrowDownB onClick={() => this.onShowPlayerList()} className={classes.RemoveClassIcon} style={{paddingTop: 7}}/>}
+                        <IoTrashA className={classes.RemoveClassIcon} onClick={() => { if (window.confirm("Are you sure you want to remove the entire class? This action is irreversible!")) { return this.props.deleteClass() } }}/>
                     </div>
                 </div>
                 {this.state.playerList ?
