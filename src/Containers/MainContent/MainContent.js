@@ -80,11 +80,11 @@ activateLevel() {
                         categoryName={"memory"}
                         selectCategory={()=>this.props.onMemoryGame()}
                     >memory <br />game</CategoryBlock>
-                    <CategoryBlock
+                    {/* <CategoryBlock
                         selected={this.props.whatsMiss}
                         categoryName={"missing"}
                         selectCategory={() => this.props.onWhatsMissing()}
-                    >what's <br />missing</CategoryBlock>
+                    >what's <br />missing</CategoryBlock> */}
                 </div>
                 <div className={classes.Controls}>
                     <StartButton onClick={() => this.dealCards()} className={classes.StartButton}>Start</StartButton>

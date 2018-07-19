@@ -227,6 +227,7 @@ class TopBar extends Component {
                 </Modal>
                 <ModalScore show={this.state.modalScore} modalClosed={() => this.setState({...this.state, modalScore: false }) } style={{ padding: 0 }}>
                     <ScoreModal
+                        currentClass={this.state.selectedClass}
                     />
                 </ModalScore>
             </div>

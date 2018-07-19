@@ -14,7 +14,13 @@ const initialState = {
         },
         preK2: {
             school: ["balls","books","box","hoops","jungle-gym","markers","scissors","shelves"],
-            mysenses: []
+            senses: ["see", "hear", "smell", "touch", "taste", "tongue", "eyes", "ear", "nose", "hand"],
+            family2: ['apartment', 'aunt', 'cousin', 'grandfather', 'grandmother', 'house', 'pets', 'uncle'],
+            toys2: [ 'actionfigure', 'blocks', 'car', 'chess', 'circus', 'slide', 'swing', 'tricycle'],
+            food2: ['chicken', 'corn', 'fish', 'meat', 'orange', 'potato', 'salad', 'watermelon'],
+            clothes2: ['boots', 'hat', 'jacket', 'raincoat', 'sandals', 'short', 'swimmingsuit', 'umbrella'],
+            animals2: ["cow", "farm", "goat", "sheep", "hen", "horse", "tractor", "rabbit"],
+            // world: ['firestation', 'hospital', 'park', 'school', 'policestation', 'restaurant', 'store', 'supermarket']
         }
     },
     categoriesArray: [],

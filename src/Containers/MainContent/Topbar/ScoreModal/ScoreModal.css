@@ -1,0 +1,12 @@
+.PlayerRow {
+display: flex;
+flex: 1; 
+flex-direction: row;
+justify-content: center; 
+align-items: center
+}
+
+.PlayerImage {
+    max-width: 20%;
+    border-radius: 50%
+}
