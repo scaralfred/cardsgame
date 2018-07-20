@@ -14,6 +14,12 @@ export const removeCategory = (name) => {
     }
 };
 
+export const clearCategories = () => {
+    return {
+        type: actionTypes.CLEAR_CATEGORIES
+    }
+};
+
 export const addLevel = (level) => {
     return {
         type: actionTypes.ADD_LEVEL,

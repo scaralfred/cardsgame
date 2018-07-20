@@ -1,5 +1,6 @@
 export { addCategory,
         removeCategory,
+        clearCategories,
         addLevel,
         memoryGame,
         whatsMissing

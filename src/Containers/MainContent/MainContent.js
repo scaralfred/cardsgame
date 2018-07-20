@@ -52,7 +52,8 @@ onResetGame(){
 }
 
 activateLevel() {
-   this.setState({...this.state, selectLevel: false }) 
+   this.setState({...this.state, selectLevel: false });
+   this.props.onClearCategories();
 }
 
     render() {
@@ -166,6 +167,7 @@ const mapDispatchToProps = dispatch => {
         onMemoryGame: () => dispatch(currencyActions.memoryGame()),
         onWhatsMissing: () => dispatch(currencyActions.whatsMissing()),
         onRetrieveState: (newState) => dispatch(currencyActions.retrieveState(newState)),
+        onClearCategories: () => dispatch(currencyActions.clearCategories())
     }
 };
 

@@ -1,5 +1,6 @@
 export const ADD_CATEGORY = "ADD_CATEGORY";
 export const REMOVE_CATEGORY = "REMOVE_CATEGORY";
+export const CLEAR_CATEGORIES = "CLEAR_CATEGORIES";
 
 export const ADD_LEVEL = "ADD_LEVEL";
 

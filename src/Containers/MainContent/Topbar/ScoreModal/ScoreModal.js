@@ -29,7 +29,8 @@ class ScoreModal extends Component {
 
 const PlayerScoreRow = (props) => (
     <div className={classes.PlayerRow}>
-        <p>
+    COMING SOON
+        {/* <p>
             {props.photo ?
             <img
                 alt={props.playerName}
@@ -38,7 +39,7 @@ const PlayerScoreRow = (props) => (
             />
             : null}
         </p>
-        <p>{props.playerName}</p>
+        <p>{props.playerName}</p> */}
     </div>
 )
 

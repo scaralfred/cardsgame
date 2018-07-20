@@ -44,6 +44,12 @@ const reducer = (state = initialState, action) => {
                 categoriesArray: state.categoriesArray.filter(item => item !== action.categoryName)
             }
 
+        case actionTypes.CLEAR_CATEGORIES:
+            return {
+                ...state,
+                categoriesArray: []
+            }
+
         case actionTypes.ADD_LEVEL:
             return {
                 ...state,
