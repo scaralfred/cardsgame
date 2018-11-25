@@ -7,22 +7,18 @@
 
 .Card {
     display: inline-block;
-    width: 14% 
+    width: 14%;
+    transition: all 0.5s;
+    perspective: 150rem;
+    transform: rotateY(180deg);
 }
 
-.CardSmall {
+.Card__Back {
     display: inline-block;
-    width: 12% 
-}
-
-.CardSmaller {
-    display: inline-block;
-    width: 10% 
-}
-
-.CardSmallest {
-    display: inline-block;
-    width: 8% 
+    width: 14%;
+    transition: all 0.5s;
+    perspective: 150rem;
+    animation: showCard 0.5s ease;
 }
 
 .FunnyAnimal {
@@ -37,4 +33,9 @@
     left: 34%;
     border-radius: 50%;
     width: 80px
+}
+
+@keyframes showCard {
+    from {opacity: 0.3}
+    to {opacity: 1}
 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classes from './ScoreModal.css';
+import star from '../../../../assets/star.png';
 
 class ScoreModal extends Component {
 
@@ -10,6 +11,7 @@ class ScoreModal extends Component {
             this.props.currentClass ? 
             this.props.classList[this.props.currentClass].map((el, i)=>{
                     return <PlayerScoreRow 
+                    stars={this.props.starCounter}
                     key={el +i} 
                     playerName={el} 
                     photo={this.props.playerPhoto[this.props.currentClass][el]["photo"] ? this.props.playerPhoto[this.props.currentClass][el]["photo"] : null }
@@ -27,10 +29,23 @@ class ScoreModal extends Component {
     }
 };
 
-const PlayerScoreRow = (props) => (
+const PlayerScoreRow = (props) => {
+    
+    const stars = () => {
+        for (let i = 0; i <= props.stars; i++) {
+           return ( <img
+                    alt={""}
+                    src={star}
+                    className={classes.Stars}
+                    />
+                )
+        }
+} 
+
+    return (
+
     <div className={classes.PlayerRow}>
-    COMING SOON
-        {/* <p>
+        <div>
             {props.photo ?
             <img
                 alt={props.playerName}
@@ -38,17 +53,24 @@ const PlayerScoreRow = (props) => (
                 className={classes.PlayerImage}
             />
             : null}
-        </p>
-        <p>{props.playerName}</p> */}
+        </div>
+        <div>
+            <div className={classes.PlayerName}>{props.playerName}</div>
+            <div className={classes.Stars}>
+                {stars()}
+            </div>
+        </div>
     </div>
-)
+    )
+}
 
 const mapStateToProps = state => {
     return {
         playerPhoto: state.classSettings.playerPhoto,
         classSettings: state.classSettings,
         auth: state.auth,
-        classList: state.classSettings.classList
+        classList: state.classSettings.classList,
+        starCounter: state.classSettings.starCounter
     }
 };
 

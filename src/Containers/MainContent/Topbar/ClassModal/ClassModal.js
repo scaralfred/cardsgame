@@ -13,8 +13,10 @@ class ClassModal extends Component {
     componentWillReceiveProps(nextProps) {
         const newValue = nextProps.classSettings;
         const loggingOut = nextProps.auth.token;
+        const starCounter = nextProps.starCounter;
 
-        if (newValue !== this.props.classSettings && this.props.auth.token && loggingOut === this.props.auth.token ) {
+
+        if ((newValue !== this.props.classSettings && starCounter === this.props.starCounter  ) && this.props.auth.token && loggingOut === this.props.auth.token ) {
             localStorage.setItem('classSettings', JSON.stringify(newValue));
             this.updateServer(newValue);
         }
@@ -95,7 +97,8 @@ const mapStateToProps = state => {
     return {
         playerPhoto: state.classSettings.playerPhoto,
         classSettings: state.classSettings,
-        auth: state.auth
+        auth: state.auth,
+        starCounter: state.classSettings.starCounter
     }
 };
 

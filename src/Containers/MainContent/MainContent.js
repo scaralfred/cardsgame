@@ -12,8 +12,8 @@ import Button from '../../Components/Button/Button';
 class MainContent extends Component {
  
     state = {
-        gamePlay: false,
-        selectLevel: true,
+        gamePlay: true,
+        selectLevel: false,
         memoryGame: false,
         cardShuffling: false,
         showAll: false,
@@ -81,11 +81,6 @@ activateLevel() {
                         categoryName={"memory"}
                         selectCategory={()=>this.props.onMemoryGame()}
                     >memory <br />game</CategoryBlock>
-                    {/* <CategoryBlock
-                        selected={this.props.whatsMiss}
-                        categoryName={"missing"}
-                        selectCategory={() => this.props.onWhatsMissing()}
-                    >what's <br />missing</CategoryBlock> */}
                 </div>
                 <div className={classes.Controls}>
                     <StartButton onClick={() => this.dealCards()} className={classes.StartButton}>Start</StartButton>
@@ -123,7 +118,7 @@ activateLevel() {
 
         const playGame =  (!this.state.gamePlay ? selectCategory
             :
-            <div style={{padding: 20}}>
+            <div style={{padding: 20}} className={classes.CardsContainer}>
             {this.props.whatsMiss ? missingGameButtons : null}
                 <Cards
                     showAll={this.state.showAll}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import classes from './Cards.css';
+import classes from './Cards.scss';
 
 class Cards extends Component {
    
@@ -64,7 +64,7 @@ class Card extends Component {
     render() {
 
        const  cardWidth = () => {
-           if (this.props.cardsNumber > 6 && this.props.cardsNumber <18) {
+           if (this.props.cardsNumber > 6 && this.props.cardsNumber < 18) {
               return  {width: '12%'} 
            } else if (this.props.cardsNumber >= 18 && this.props.cardsNumber < 30) {
                return { width: '11%' }
@@ -78,14 +78,14 @@ class Card extends Component {
 
         return (
             <div 
-            className={classes.Card}
+            className={!this.state.showCard ? classes.Card : classes.Card__Back}
             style={cardWidth()}
             onMouseDown={()=>this.setState({...this.state.showCard, showCard: !this.state.showCard})}
             >
                 <img
                     rel="preload"
                     alt={this.props.cardName}
-                    src={this.state.showCard || this.state.showAll?
+                    src={this.state.showCard || this.state.showAll ?
                         require(`../../../assets/cards/${this.props.categoryName}/${this.props.cardName}.png`)
                         : require(`../../../assets/cards/card-back.png`)
                     }

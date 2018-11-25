@@ -23,7 +23,7 @@ const initialState = {
             // world: ['firestation', 'hospital', 'park', 'school', 'policestation', 'restaurant', 'store', 'supermarket']
         }
     },
-    categoriesArray: [],
+    categoriesArray: ['classroom'],
     levelsArray: ["preK1"],
     memoryGame: false,
     whatsMissing: false

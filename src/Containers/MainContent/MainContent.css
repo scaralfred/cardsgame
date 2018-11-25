@@ -12,11 +12,14 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  animation: slowShow 0.8s ease;
 }
 
 .SelectCategory {
   display: flex;
-  flex-direction: row
+  flex: 1;
+  flex-direction: row;
+  animation: slowShow2 0.8s ease;
 }
 
 .Controls {
@@ -32,3 +35,19 @@
   color: #FF5805;
   border-radius: 25px
 }
+
+.CardsContainer {
+  animation: slowShow 0.8s ease;
+}
+
+/* The animation code */
+@keyframes slowShow {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+@keyframes slowShow2 {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+

@@ -2,11 +2,18 @@
 display: flex;
 flex: 1; 
 flex-direction: row;
-justify-content: center; 
-align-items: center
 }
 
 .PlayerImage {
-    max-width: 20%;
-    border-radius: 50%
+    max-width: 5rem;
+    border-radius: 50%;
+    padding: 0 1rem
+}
+
+.PlayerName {
+    font-size: 1.5rem
+}
+
+.Stars {
+    width: 2rem
 }
