@@ -12,8 +12,8 @@ import Button from '../../Components/Button/Button';
 class MainContent extends Component {
  
     state = {
-        gamePlay: true,
-        selectLevel: false,
+        gamePlay: false,
+        selectLevel: true,
         memoryGame: false,
         cardShuffling: false,
         showAll: false,
